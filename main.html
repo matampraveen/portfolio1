@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Praveen </title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #job-title {
+            display: inline-block;
+            font-size: 2rem; /* Adjust font size as needed */
+        }
+    
+        .letter {
+            display: inline-block;
+            opacity: 0; /* Start invisible */
+            transition: opacity 0.5s ease-in-out; /* Smooth transition */
+        }
+    
+        .visible {
+            opacity: 1; /* Fade in */
+        }
+    </style>
+    
+</head>
+<body>
+<!-- Header Section -->
+<div id="header">
+    <div class="container">
+        <nav>
+            <img src="my_img1.jpg" class="logo" alt="My Profile Picture">
+            <ul>
+                <li><a href="#header">Home</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Project</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-text">
+            <h1>Hi, I'm Praveen</h1>
+            <h1 id="job-title">Software Engineer</h1>
+            <br><br><br><br><br>
+            <br><br>
+            <div class="about-me">
+                <h1 class="sub-title" style="color: #ff004f;">About Me</h1>
+                <p class="sub-title">Driven and enthusiastic recent graduate with a degree in Computer Science and Engineering, seeking to leverage 
+                    strong problem-solving skills, technical proficiency in programming languages such as Python, SQL, and a passion 
+                    for learning new technologies to contribute effectively.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- Skills Section -->
+    <div id="skills">
+        <div class="container">
+            <h1>Skills</h1>
+            <div id="skills-grid">
+                <div class="skill-item">
+                    <img src="python_logo.jpeg" alt="Python">
+                    <p>Python</p>
+                </div>
+                <div class="skill-item">
+                    <img src="html_logo.jpeg" alt="HTML">
+                    <p>HTML</p>
+                </div>
+                <div class="skill-item">
+                    <img src="css_logo.jpeg" alt="CSS">
+                    <p>CSS</p>
+                </div>
+                <div class="skill-item">
+                    <img src="javascript_logo.jpeg" alt="JavaScript">
+                    <p>JavaScript</p>
+                </div>
+                <div class="skill-item">
+                    <img src="mongodb_logo.jpeg" alt="MongoDB">
+                    <p>MongoDB</p>
+                </div>
+                <div class="skill-item">
+                    <img src="mysql_logo.jpeg" alt="MySQL">
+                    <p>MySQL</p>
+                </div>
+                <div class="skill-item">
+                    <img src="manual_logo.jpeg" alt="Manual Testing">
+                    <p>Manual Testing</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Projects Section -->
+    <div id="projects">
+        <div class="container">
+            <h1>Projects</h1>
+            <div id="projects-grid">
+                <div class="project-card">
+                    <img src="todo_logo.png" alt="Django Todo Application">
+                    <h2>Django Todo Application</h2>
+                    <p>Developed a full-stack Todo application using Django, implementing CRUD operations for managing tasks.</p>
+                    <p>Skills Demonstrated: </p>
+                       <li> Django templates </li>
+                        <li>Bootstrap </li>
+                        <li>CSS</li> 
+                </div>
+                <div class="project-card">
+                    <img src="snake_logo.jpeg" alt="Snake Game">
+                    <h2>Snake Game</h2>
+                    <p>Built a classic Snake Game using Python. Implemented the game logic and user interface.</p>
+                    <p>Skills Demonstrated: </p>
+                        <li>Python programming</li> 
+                       <li> GUI development with Turtle graphics</li> 
+                        <li>Event handling and game mechanics  </li>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Education Section -->
+    <div id="education">
+        <div class="container">
+            <h1>Education</h1>
+            <div id="education-grid">
+                <div class="education-card">
+                    <h2>B.Tech in Computer Science and Engineering</h2>
+                    <p>Malla Reddy Engineering College (2020-2024), CGPA: 8.0/10</p>
+                </div>
+                <div class="education-card">
+                    <h2>Intermediate</h2>
+                    <p>Impulse Junior College</p>
+                </div>
+                <div class="education-card">
+                    <h2>High School</h2>
+                    <p>Vivekananda High School</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!--Resume Section-->
+    <div class="resume-section">
+        <h2>Download My Resume</h2>
+        <p>Click the button below to download my resume in PDF format:</p>
+        <a href="Resume_Praveen.pdf" class="resume-button" download>Download Resume</a>
+    </div>
+
+
+
+
+    <!-- Contact Section -->
+   <!-- Contact Section -->
+   <div id="contact">
+    <div class="container">
+        <h1 class="sub-title" style="color: #ff004f;">Contact Me</h1>
+        <p>If you have any questions or would like to discuss a project, feel free to reach out to me!</p>
+        <form id="contact-form" action="https://formspree.io/f/mldrybkd" method="POST">
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+        <div id="form-message" style="display: none;"></div>
+    </div>
+</div>
+
+
+    <script>
+
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        const formData = new FormData(this);
+        
+        fetch(this.action, {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
+        })
+        .then(response => {
+            if (response.ok) {
+                document.getElementById('form-message').innerText = 'Your message has been sent successfully!';
+                document.getElementById('form-message').style.display = 'block';
+                this.reset(); // Reset form fields
+            } else {
+                document.getElementById('form-message').innerText = 'There was a problem sending your message. Please try again.';
+                document.getElementById('form-message').style.display = 'block';
+            }
+        })
+        .catch(error => {
+            document.getElementById('form-message').innerText = 'There was a problem sending your message. Please try again.';
+            document.getElementById('form-message').style.display = 'block';
+        });
+    });
+
+
+
+
+        const titles = ["Software  Engineer", "Web  Developer"];
+        const titleElement = document.getElementById("job-title");
+        let currentIndex = 0;
+    
+        function updateTitle() {
+            const currentTitle = titles[currentIndex];
+            const nextTitle = titles[(currentIndex + 1) % titles.length];
+    
+            const letters = currentTitle.split('');
+            titleElement.innerHTML = ''; // Clear current title
+    
+            letters.forEach((letter, index) => {
+                const letterSpan = document.createElement('span');
+                letterSpan.classList.add('letter');
+                letterSpan.textContent = letter;
+                titleElement.appendChild(letterSpan);
+                setTimeout(() => {
+                    letterSpan.classList.add('visible');
+                }, index * 200); // Adjust timing for each letter
+            });
+    
+            setTimeout(() => {
+                const nextLetters = nextTitle.split('');
+                titleElement.innerHTML = ''; // Clear title for next
+                nextLetters.forEach((letter, index) => {
+                    const letterSpan = document.createElement('span');
+                    letterSpan.classList.add('letter');
+                    letterSpan.textContent = letter;
+                    titleElement.appendChild(letterSpan);
+                    setTimeout(() => {
+                        letterSpan.classList.add('visible');
+                    }, index * 200); // Adjust timing for each letter
+                });
+            }, letters.length * 200 + 1000); // Delay before showing next title
+    
+            currentIndex = (currentIndex + 1) % titles.length; // Cycle through titles
+        }
+    
+        setInterval(updateTitle, 4000); // Change title every 4 seconds
+    </script>
+    
+    
+</body>
+</html>
